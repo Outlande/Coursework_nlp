@@ -6,7 +6,7 @@ import numpy as np
 import math
 
 def read_data():
-    datasets_root = "/home/levi/Desktop/homework_language/first_work/datasets"
+    datasets_root = "./datasets"
     catalog = "inf.txt"
     with open(os.path.join(datasets_root, catalog), "r") as f:
         all_files = f.readline().split(",")
