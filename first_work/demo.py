@@ -110,11 +110,6 @@ def main():
 
     print("average word of terms:", count_words/count_terms)
 
-    print("term_count_two: ",term_count_two["叫,道"])
-    print("term_count_one: ",term_count["叫"])
-    print("term_count_one: ",term_count["道"])
-
-
     indice_one = np.argsort(-np.array(list(term_count.values())))
     indice_two = np.argsort(-np.array(list(term_count_two.values())))
     indice_three = np.argsort(-np.array(list(term_count_three.values())))
