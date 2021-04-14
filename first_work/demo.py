@@ -101,29 +101,32 @@ def main():
                 term_three.append(term)
                 term_count[term] += 1
 
-    print("words number: ", count_words)
-    print("terms number: ", count_terms)
+    print("汉字 数量: ", count_words)
+    print("词语 数量: ", count_terms)
+    print("词语的平均字数:", count_words/count_terms)
 
-    print("terms_one type: ", len(term_count))
-    print("terms_two type: ", len(term_count_two))
-    print("terms_three type: ", len(term_count_three))
+    print("一元组 类型数: ", len(term_count))
+    print("二元组 类型数: ", len(term_count_two))
+    print("三元组 类型数: ", len(term_count_three))
 
-    print("average word of terms:", count_words/count_terms)
+    print("一元组 总数: ", sum(term_count.values()))
+    print("二元组 总数: ", sum(term_count_two.values()))
+    print("三元组 总数: ", sum(term_count_three.values()))
 
     indice_one = np.argsort(-np.array(list(term_count.values())))
     indice_two = np.argsort(-np.array(list(term_count_two.values())))
     indice_three = np.argsort(-np.array(list(term_count_three.values())))
 
 
-    print("one terms top 10")
+    print("一元组频数 top 10")
     for i in range(10):
         print(list(term_count.keys())[indice_one[i]], " has ", list(term_count.values())[indice_one[i]])
 
-    print("two terms top 10")
+    print("二元组频数 top 10")
     for i in range(10):
         print(list(term_count_two.keys())[indice_two[i]], " has ", list(term_count_two.values())[indice_two[i]])
 
-    print("three terms top 10")
+    print("三元组频数 top 10")
     for i in range(10):
         print(list(term_count_three.keys())[indice_three[i]], " has ", list(term_count_three.values())[indice_three[i]])
 
@@ -131,19 +134,19 @@ def main():
     entropy_one = 0
     for item in term_count:
         entropy_one -= term_count[item]/sum_number_one * math.log(term_count[item]/sum_number_one)/math.log(2)
-    print("Entropy of one term: ", entropy_one)
+    print("Entropy of 一元组: ", entropy_one)
 
     sum_number_two = sum(term_count_two.values())
     entropy_two = 0
     for item in term_count_two:
         entropy_two -= term_count_two[item]/sum_number_two * math.log(term_count_two[item]/term_count[item.split(',')[0]])/math.log(2)
-    print("Entropy of two term: ", entropy_two)
+    print("Entropy of 二元组: ", entropy_two)
 
     sum_number_three = sum(term_count_three.values())
     entropy_three = 0
     for item in term_count_three:
         entropy_three -= term_count_three[item]/sum_number_three * math.log(term_count_three[item] /(term_count_two[item.split(',')[0]+','+item.split(',')[1]]))/math.log(2)
-    print("Entropy of three term: ", entropy_three)
+    print("Entropy of 三元组: ", entropy_three)
 
 
 
