@@ -54,7 +54,7 @@ def train():
 
         # sg=0 cbow, sg=1 skip-gram
         # size is the dim of feature
-        model = Word2Vec(sentences=all_terms[name], sg=0, vector_size=50, min_count=10, window=10, epochs=100)
+        model = Word2Vec(sentences=all_terms[name], sg=0, vector_size=256, min_count=10, window=10, epochs=10)
 
         print("Finish to build ", name, " model")
         text_models[name] = model
@@ -109,7 +109,7 @@ def test_graph():
 
     test_names = ['郭靖', '黄蓉', '杨康', '黄药师', '洪七公', '周伯通', '欧阳锋', '一灯大师', '王重阳', '穆念慈', '裘千仞', '梅超风', '柯镇恶', '华筝', '铁木真']
 
-    results = np.zeros((0, 50))
+    results = np.zeros((0, 256))
 
     for name in test_names:
         feature = model.wv[name]
@@ -132,7 +132,7 @@ def test_graph():
 
     test_names = ['萧峰', '乔峰', '段誉', '虚竹', '慕容复', '王语嫣', '阿朱', '阿紫', '段正淳', '鸠摩智', '天山童姥', '李秋水', '游坦之', '慕容博', '萧远山']
 
-    results = np.zeros((0, 50))
+    results = np.zeros((0, 256))
 
     for name in test_names:
         feature = model.wv[name]
@@ -155,7 +155,7 @@ def test_graph():
 
     test_names = ['赵敏', '周芷若', '殷素素', '纪晓芙', '张翠山', '灭绝师太', '殷离', '俞莲舟', '宋青书', '殷梨亭', '谢逊', '张无忌', '范遥', '黛绮丝', '小昭']
 
-    results = np.zeros((0, 50))
+    results = np.zeros((0, 256))
 
     for name in test_names:
         feature = model.wv[name]
@@ -178,7 +178,7 @@ def test_content():
 
     test_names = ['降龙十八掌', '打狗棒法', '蛤蟆功', '灵蛇', '一阳指', '九阴','双手','空明拳']
 
-    results = np.zeros((0, 50))
+    results = np.zeros((0, 256))
 
     for name in test_names:
         feature = model.wv[name]
@@ -200,7 +200,7 @@ def test_content():
     model = Word2Vec.load('models/'+text_name+'.model')
 
     test_names = ['少林', '天龙', '逍遥', '天山', '星宿', '姑苏', '丐帮']
-    results = np.zeros((0, 50))
+    results = np.zeros((0, 256))
 
     for name in test_names:
         feature = model.wv[name]
@@ -223,7 +223,7 @@ def test_content():
 
     test_names =  ['少林','武当','峨嵋', '华山', '昆仑', '崆峒', '明教', '波斯', '天鹰', '西域', '金刚', '巨鲸帮',  '海沙', '神拳门']
 
-    results = np.zeros((0, 50))
+    results = np.zeros((0, 256))
 
     for name in test_names:
         feature = model.wv[name]
